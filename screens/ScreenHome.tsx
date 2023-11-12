@@ -133,8 +133,10 @@ const styles = StyleSheet.create({
         flexDirection: "row", 
         flexWrap: "wrap", 
         height: "auto", 
-        width: "auto", 
-        padding: 15
+        width: "100%",
+        // backgroundColor: "red",
+        justifyContent: "center", 
+        // padding: 15
     },
     cardContent: {
         alignItems: 'center',

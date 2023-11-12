@@ -10,16 +10,26 @@ import ElectricityScreen from './screens/ElectricityScreen';
 import GasScreen from './screens/GasScreen';
 import WaterScreen from './screens/WaterScreen';
 import CameraScreen from './screens/CameraScreen';
-import ScreenHome from './screens/ScreenHome';
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+
+type RootStackParamList = {
+  Main: undefined;
+  Waste: undefined;
+  Electricity: undefined;
+  Gas: undefined;
+  Water: undefined;
+  CameraScreen: undefined;
+  Login: undefined;
+  SignUp: undefined;
+};
+
 
 function App() {
 
   // AsyncStorage.clear();
-
-
-
 
   useEffect(() => {
 
@@ -57,7 +67,7 @@ function App() {
         ) : (
           <>
             <Stack.Screen name="Login" component={SignIn} />
-            <Stack.Screen name="Sign Up" component={SignUp} />
+            <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="Main" component={TabbedScreens} options={{ headerShown: false }} />
           </>
         )}
