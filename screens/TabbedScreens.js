@@ -15,7 +15,7 @@ const TabbedScreens = () => {
         <Tab.Screen name="Home" component={ScreenHome} />
         <Tab.Screen name="Community" component={CommunityScreen} />
         <Tab.Screen name="Bills" component={Bills} />
-        <Tab.Screen name='Donation' component={Donation} />
+        <Tab.Screen name='Settings' component={Donation} />
       </Tab.Navigator>
     )
 }
