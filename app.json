@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b364342d-ebe4-478b-8931-f855605f5b98"
+      }
+    },
+    "owner": "raiyan101"
   }
 }
