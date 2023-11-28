@@ -58,21 +58,21 @@ const ScreenHome: React.FC = () => {
                     </View>
                 </Card>
 
-                <Card height={110} width={"38%"} onPress={() => handleGasPress('gas')}>
+                <Card height={110} width={"38%"} onPress={() => handleGasPress('gas')} active={true}>
                     <View style={styles.cardContent}>
                         <Text style={styles.cardText}>Gas</Text>
                         <Text style={styles.cardVal}>20ft³</Text>                
                     </View>
                 </Card>
                 
-                <Card height={110} width={"38%"} onPress={() => handleWastePress("Waste")}>
+                <Card height={110} width={"38%"} onPress={() => handleWastePress("Waste")} >
                     <View style={styles.cardContent}>
                         <Text style={styles.cardText}>Waste</Text>
                         <Text style={styles.cardVal}>95%</Text>
                     </View>
                 </Card>
                 
-                <Card height={110} width={"38%"} onPress={() => handleWaterPress('Water')}>
+                <Card height={110} width={"38%"} onPress={() => handleWaterPress('Water')} active={true}>
                     <View style={styles.cardContent}>
                         <Text style={styles.cardText}>Water</Text>
                         <Text style={styles.cardVal}>95L</Text>

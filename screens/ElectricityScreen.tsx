@@ -65,7 +65,7 @@ const ElectricityScreen: React.FC = () => {
     const day = date.getDay();
     const dayNames = ["S", "M", "T", "W", "TH", "F", "SA"];
 
-    console.log(date, dayNames[day])
+    // console.log(date, dayNames[day])
     return dayNames[day];
   };
   
@@ -78,6 +78,7 @@ const ElectricityScreen: React.FC = () => {
     return sortedData.map(item => ({
       value: item.usageKWh,
       label: formatDateWithDay(item.date),
+      frontColor: '#177AD5'
     }));
   };
 
@@ -88,13 +89,13 @@ const ElectricityScreen: React.FC = () => {
 
         {/* <Text style={styles.cardText}>Welcome to your electricity monitoring pane. 
             Here you can monitor your daily electricity usage and cost.</Text> */}
-        <Card height={110} width={"38%"}>
+        <Card height={'auto'} width={"38%"} active={true}>
           <View style={styles.cardContent}>
             <Text style={styles.cardText}>Electricity</Text>
             <Text style={styles.cardVal}>500w</Text>
           </View>
         </Card>
-        <Card height={110} width={"38%"}>
+        <Card height={'auto'} width={"38%"} active={true}>
           <View style={styles.cardContent}>
             <Text style={styles.cardText}>Cost</Text>
             <Text style={styles.cardVal}>40$</Text>
@@ -106,7 +107,7 @@ const ElectricityScreen: React.FC = () => {
           data.map( (data) => {
             
             return(
-              <Card height={330} width={"85%"} key={data._id}>
+              <Card height={'auto'} width={"85%"} key={data._id} active={true}>
                 <View style={styles.cardContent}>
                   <Text style={styles.cardTextApp}>{data.applianceName}</Text>
                   <Text style={styles.cardTextApp}>Weekly Usage: 500w</Text>
@@ -156,7 +157,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     height: "auto",
-    paddingBottom: 15
+    paddingBottom: 15,
+    overflow: "scroll"
   },
   cardText: {
     alignSelf: 'center',
