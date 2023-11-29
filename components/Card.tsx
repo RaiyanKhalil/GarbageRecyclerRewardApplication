@@ -1,14 +1,14 @@
 import React from "react";
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 
-const Card = ({ height, width, children, onPress = () => {}, active}) => {
+const Card = ({ height, width, children, onPress = () => {}, onLongPress = () => {}, active}) => {
   const cardStyle = {
     height,
     width,
   };
 
   return (
-    <TouchableOpacity style={[styles.card, cardStyle]} onPress={onPress} disabled={active}>
+    <TouchableOpacity style={[styles.card, cardStyle]} onPress={onPress} disabled={active} onLongPress={onLongPress}>
       {children}
     </TouchableOpacity>
   );

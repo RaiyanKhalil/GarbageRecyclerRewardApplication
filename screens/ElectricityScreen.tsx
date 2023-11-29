@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { BarChart } from "react-native-gifted-charts";
 import Card from "../components/Card";
+import PopupFragment from "../components/PopupFragment";
 
 interface DailyUsage {
   _id: string;
@@ -19,8 +20,13 @@ interface ApplianceData {
 const ElectricityScreen: React.FC = () => {
   
   //Backend Server URL
-  const url = "http://192.168.1.80:3000/appliances";
+  const url = "https://2575-140-161-250-179.ngrok-free.app/appliances";
   const [data, setData] = useState<ApplianceData[]>([]);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const togglePopup = () => {
+    setPopupVisible(!isPopupVisible);
+  };
 
   //Will only run once after the module is loaded
   useEffect(() => {
@@ -44,7 +50,7 @@ const ElectricityScreen: React.FC = () => {
     if(data != null){
 
     }
-  }, []);
+  }, [isPopupVisible]);
 
   // Use a default chart data if the fetch fails or takes time
   const defaultBarData = [
@@ -64,8 +70,6 @@ const ElectricityScreen: React.FC = () => {
     const date = new Date(dateString);
     const day = date.getDay();
     const dayNames = ["S", "M", "T", "W", "TH", "F", "SA"];
-
-    // console.log(date, dayNames[day])
     return dayNames[day];
   };
   
@@ -74,7 +78,6 @@ const ElectricityScreen: React.FC = () => {
 
     const sortedData = bar_Data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-    // console.log(sortedData)
     return sortedData.map(item => ({
       value: item.usageKWh,
       label: formatDateWithDay(item.date),
@@ -82,9 +85,13 @@ const ElectricityScreen: React.FC = () => {
     }));
   };
 
+  const handleLongPress = () => {
+    console.log("Card long pressed!");
+  };
+
 
   return (
-    <View >
+    <View style={styles.containerView}>
       <ScrollView contentContainerStyle={styles.container}>
 
         {/* <Text style={styles.cardText}>Welcome to your electricity monitoring pane. 
@@ -107,10 +114,10 @@ const ElectricityScreen: React.FC = () => {
           data.map( (data) => {
             
             return(
-              <Card height={'auto'} width={"85%"} key={data._id} active={true}>
+              <Card height={'auto'} width={"85%"} key={data._id} active={false} onLongPress={handleLongPress}>
                 <View style={styles.cardContent}>
                   <Text style={styles.cardTextApp}>{data.applianceName}</Text>
-                  <Text style={styles.cardTextApp}>Weekly Usage: 500w</Text>
+                  <Text style={styles.cardTextApp}>Power Rating: {data.powerRatingWatt}W</Text>
                   <BarChart
                     barWidth={15}
                     noOfSections={5}
@@ -132,19 +139,21 @@ const ElectricityScreen: React.FC = () => {
 
       <TouchableOpacity
         style={styles.fab}
-        onPress={() => {
-          // navigation.navigate('CameraScreen', {title});
-        }}
+        onPress={togglePopup}
       >
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
           <Text>Add</Text>
         </View>
       </TouchableOpacity>
+      <PopupFragment visible={isPopupVisible} onClose={togglePopup} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  containerView: {
+    height: '100%'
+  },
   container: {
     display: 'flex',
     flexDirection: "row",

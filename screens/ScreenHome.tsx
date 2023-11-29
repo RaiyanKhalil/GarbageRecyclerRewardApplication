@@ -9,22 +9,22 @@ const ScreenHome: React.FC = () => {
     const navigation = useNavigation();
 
     const handleWastePress = (title: string) => {
-        console.log(`Card pressed: ${title}`);
+        // console.log(`Card pressed: ${title}`);
         navigation.navigate('Waste', {title});
     };
 
     const handleElectricityPress = (tittle: string) => {
-        console.log(`Card pressed: ${tittle}`);
+        // console.log(`Card pressed: ${tittle}`);
         navigation.navigate('Electricity', {tittle});
     }
 
     const handleGasPress = (tittle: string) => {
-        console.log(`Card pressed: ${tittle}`);
+        // console.log(`Card pressed: ${tittle}`);
         navigation.navigate('Gas', {tittle});
     }
 
     const handleWaterPress = (tittle: string) => {
-        console.log(`Card pressed: ${tittle}`);
+        // console.log(`Card pressed: ${tittle}`);
         navigation.navigate('Water', {tittle});
     }
 
@@ -51,7 +51,7 @@ const ScreenHome: React.FC = () => {
         <View>
             <ScrollView contentContainerStyle={styles.container}>
 
-                <Card height={110} width={"38%"} onPress={() => handleElectricityPress('Electricity')}>
+                <Card height={110} width={"38%"} onPress={() => handleElectricityPress('Electricity')} >
                     <View style={styles.cardContent}>
                         <Text style={styles.cardText}>Electricity</Text>
                         <Text style={styles.cardVal}>40w</Text>
@@ -79,14 +79,14 @@ const ScreenHome: React.FC = () => {
                     </View>                
                 </Card>
                 
-                <Card height={"auto"} width={"85%"} onPress={() => handleWastePress("Waste")}>
+                <Card height={"auto"} width={"85%"} onPress={() => handleWastePress("Waste")} active={true}>
                     <Text>Type of Waste</Text>
                     <View style={styles.cardContent}>
                         <PieChart data={wasteData} radius={80} donut showText />
                     </View>     
                 </Card>
                 
-                <Card height={"auto"} width={"85%"} onPress={() => handleElectricityPress('Electricity')}>
+                <Card height={"auto"} width={"85%"} onPress={() => handleElectricityPress('Electricity')} active={true}>
                     <Text>Monthly Electricity Consumption</Text>
                     <View style={styles.cardContent}>
                         <BarChart
@@ -101,10 +101,10 @@ const ScreenHome: React.FC = () => {
                     </View>     
                 </Card>
 
-                <Card height={"auto"} width={"85%"} onPress={() => handleGasPress('gas')}>
+                <Card height={"auto"} width={"85%"} onPress={() => handleGasPress('gas')} active={true}>
                     <Text>Monthly Gas Consumption</Text>
                     <View style={styles.cardContent}>
-                    <BarChart
+                        <BarChart
                             barWidth={15}
                             noOfSections={5}
                             barBorderRadius={4}
@@ -116,7 +116,7 @@ const ScreenHome: React.FC = () => {
                     </View>   
                 </Card>
 
-                <Card height={"auto"} width={"85%"} onPress={() => handleWaterPress('Water')}>
+                <Card height={"auto"} width={"85%"} onPress={() => handleWaterPress('Water')} active={true}>
                     <Text>Monthly Water Consumption</Text>
                     <View style={styles.cardContent}>
                         <LineChart areaChart data={wasteData} curved/>

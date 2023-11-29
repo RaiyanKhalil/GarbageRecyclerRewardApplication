@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "MyExpoAppTensor",
-    "slug": "MyExpoAppTensor",
+    "slug": "imageclass",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,20 +15,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.raiyan101.imageclass"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.raiyan101.imageclass"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "b364342d-ebe4-478b-8931-f855605f5b98"
+        "projectId": "3aa013e5-91ad-4f86-bc5d-d9cb4a7a921c"
       }
     },
     "owner": "raiyan101"

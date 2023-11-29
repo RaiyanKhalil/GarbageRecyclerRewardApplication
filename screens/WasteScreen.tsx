@@ -9,36 +9,36 @@ const WasteScreen = ({route}) => {
 
     return (
 
-        <View >
+        <View style={styles.containerView}>
           <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.cardText}>Welcome to your garbage recycler. Here you can take 
+            {/* <Text style={styles.cardText}>Welcome to your garbage recycler. Here you can take 
             pictures of your waste and we will do some machine learning mgic and 
-            give you an estimate to how much money you can get back based on your wastes.</Text>
-            <Card height={110} width={"38%"}>
+            give you an estimate to how much money you can get back based on your wastes.</Text> */}
+            <Card height={"auto"} width={"38%"} active={true}>
                 <View style={styles.cardContent}>
                     <Text style={styles.cardText}>Plastic</Text>
                     <Text style={styles.cardVal}>40</Text>
                 </View>
             </Card>
-            <Card height={110} width={"38%"} >
+            <Card height={"auto"} width={"38%"} active={true}>
                 <View style={styles.cardContent}>
                     <Text style={styles.cardText}>Glass</Text>
                     <Text style={styles.cardVal}>30</Text>
                 </View>
             </Card>
-            <Card height={110} width={"38%"}>
+            <Card height={"auto"} width={"38%"} active={true}>
                 <View style={styles.cardContent}>
                     <Text style={styles.cardText}>Metal</Text>
                     <Text style={styles.cardVal}>20</Text>
                 </View>
             </Card>
-            <Card height={110} width={"38%"} >
+            <Card height={"auto"} width={"38%"} active={true}>
                 <View style={styles.cardContent}>
                     <Text style={styles.cardText}>Organic</Text>
-                    <Text style={styles.cardVal}>5kg</Text>
+                    <Text style={styles.cardVal}>5lb</Text>
                 </View>
             </Card>
-            <Card height={130} width={"85%"}>
+            <Card height={"auto"}  width={"85%"} active={true}>
                 <View style={styles.cardContent}>
                   <Text>Latest Reutrn</Text>
                   <Text>Plastic: 3</Text>
@@ -46,11 +46,32 @@ const WasteScreen = ({route}) => {
                   <Text>Metal: 3</Text>
                   <Text>organinc: 1kg</Text>
                   <Text>Total Recieved: $5</Text>
-
+                </View>
+            </Card>
+            <Card height={"auto"}  width={"85%"} active={true}>
+                <View style={styles.cardContent}>
+                  <Text>Latest Reutrn</Text>
+                  <Text>Plastic: 3</Text>
+                  <Text>Glass: 3</Text>
+                  <Text>Metal: 3</Text>
+                  <Text>organinc: 1kg</Text>
+                  <Text>Total Recieved: $5</Text>
+                </View>
+            </Card>
+            <Card height={"auto"}  width={"85%"} active={true}>
+                <View style={styles.cardContent}>
+                  <Text>Latest Reutrn</Text>
+                  <Text>Plastic: 3</Text>
+                  <Text>Glass: 3</Text>
+                  <Text>Metal: 3</Text>
+                  <Text>organinc: 1kg</Text>
+                  <Text>Total Recieved: $5</Text>
                 </View>
             </Card>
             
-            <TouchableOpacity
+
+          </ScrollView>
+          <TouchableOpacity
               style={styles.fab} onPress={() => {
                 navigation.navigate('CameraScreen', {title});
               }}
@@ -59,19 +80,22 @@ const WasteScreen = ({route}) => {
                   <Text>Camera</Text>
               </View>
             </TouchableOpacity>
-          </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    containerView: {
+        height: '100%'
+    },
     container: {
         display: 'flex', 
         flexDirection: "row", 
         flexWrap: "wrap", 
-        height: "100%", 
-        width: "100%", 
-        padding: 15
+        height: "auto", 
+        width: "100%",
+        // backgroundColor: "red",
+        justifyContent: "center", 
     },
     fab: {
         position: "absolute",

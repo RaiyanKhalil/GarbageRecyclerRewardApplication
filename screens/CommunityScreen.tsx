@@ -2,7 +2,45 @@ import { View, Text, TouchableOpacity, FlatList, ScrollView, StyleSheet, Image }
 import MapView, { Marker } from "react-native-maps";
 import { useEffect, useState } from "react";
 import * as Location from "expo-location";
+import { Avatar } from '@rneui/themed';
 
+type AvatarData = {
+    image_url: string;
+};
+
+const dataList: AvatarData[] = [
+    {
+        image_url:
+          'https://cdn.pixabay.com/photo/2019/11/03/20/11/portrait-4599553__340.jpg',
+    },
+    {
+      image_url: 'https://randomuser.me/api/portraits/men/36.jpg',
+    },
+    {
+      image_url:
+        'https://cdn.pixabay.com/photo/2019/11/03/20/11/portrait-4599553__340.jpg',
+    },
+    {
+      image_url:
+        'https://cdn.pixabay.com/photo/2014/09/17/20/03/profile-449912__340.jpg',
+    },
+    {
+      image_url:
+        'https://cdn.pixabay.com/photo/2020/09/18/05/58/lights-5580916__340.jpg',
+    },
+    {
+      image_url:
+        'https://cdn.pixabay.com/photo/2016/11/21/12/42/beard-1845166_1280.jpg',
+    },
+    {
+        image_url:
+          'https://cdn.pixabay.com/photo/2014/09/17/20/03/profile-449912__340.jpg',
+    },
+    {
+        image_url:
+          'https://cdn.pixabay.com/photo/2020/09/18/05/58/lights-5580916__340.jpg',
+    },
+];
 
 const CommunityScreen: React.FC = () => {
     const [location, setLocation] = useState<any>(null);
@@ -23,9 +61,7 @@ const CommunityScreen: React.FC = () => {
             console.error("Error getting location:", error);
           }
         })();
-      }, []);
-
-    const topContributors = Array.from({ length: 10 })
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -54,19 +90,26 @@ const CommunityScreen: React.FC = () => {
                     </View>
                 )}
             </View>
-            <View style={styles.topContributerCircleHolder}>
-                <FlatList
-                    horizontal
-                    data={topContributors}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item, index }) => (
-                    <View style={styles.topContributerBubbles} key={index} />
-                    )}
-                />
+            <View style={styles.scrollView} >
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {dataList.map((l, i) => (
+                        <Avatar
+                            size={64}
+                            containerStyle={
+                                {
+                                    marginRight: 5,
+                                }
+                            }
+                            rounded
+                            source={l.image_url ? { uri: l.image_url } : {}}
+                            key={`${i}-${i}`}
+                        />
+                    ))}
+                </ScrollView>
             </View>
             <ScrollView style={styles.topContriCardsView}>
                 <View>
-                    
+                    <Text>yolo</Text>
                 </View>
             </ScrollView>
         </View>
@@ -77,6 +120,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+
     mapBorder: {
         width: '100%',
         height: '30%',
@@ -87,22 +131,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
-    topContributerCircleHolder : {
-        width: '100%',
-        height: 80,
-        // backgroundColor: 'black',
+    scrollView: {
+
+        marginBottom: 10,
         marginTop: 10,
-        display: 'flex',
-        flexDirection: 'row',
-        overflow: 'visible',
-        
-    },
-    topContributerBubbles: {
-        width: 70,
-        height: 70,
-        borderRadius: 50,
-        backgroundColor: "red",
-        margin: 5
+
     },
     topContriCardsView: {
 
